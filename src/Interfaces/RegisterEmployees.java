@@ -43,6 +43,7 @@ public class RegisterEmployees extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Register Employees");
 
         jLabel1.setText("Name");
 
@@ -59,6 +60,11 @@ public class RegisterEmployees extends javax.swing.JFrame {
         jButton1.setText("Register");
 
         jButton2.setText("Cancel");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jTextField1.setName("Name"); // NOI18N
 
@@ -141,6 +147,11 @@ public class RegisterEmployees extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+            MainInterface m1=new MainInterface();
+            m1.setVisible(true);
+            this.dispose();    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
