@@ -1,0 +1,127 @@
+1)Role table
+CREATE TABLE Role (
+
+RoleID INT NOT NULL auto_increment,
+
+RoleName CHAR(15) UNIQUE NOT NULL,
+
+Description CHAR(100),
+
+PRIMARY KEY (RoleID)
+
+);
+
+
+2)Salary table
+CREATE TABLE Salary (
+
+SalaryID INT NOT NULL auto_increment,
+
+Role CHAR(15) NOT NULL,
+
+BasicSalary DECIMAL(8,2),
+
+EPF FLOAT,
+
+ETF FLOAT,
+
+No_of_Leaves_for_no_pay INT NOT NULL,
+
+PRIMARY KEY (SalaryID),
+
+FOREIGN KEY (Role) REFERENCES Role(RoleName)
+
+);
+
+3)Attendance table
+CREATE TABLE Attendance (
+
+AttendanceID INT NOT NULL auto_increment,
+
+EmpID INT NOT NULL,
+
+Work_Date DATE,
+
+Presence CHAR(10),
+
+PRIMARY KEY (AttendanceID),
+
+FOREIGN KEY (EmpID) REFERENCES Employee(EmployeeID)
+
+);
+
+4)Employee table
+CREATE TABLE Employee (
+
+EmployeeID INT NOT NULL auto_increment,
+
+EmployeeName CHAR(70) NOT NULL UNIQUE,
+
+Address VARCHAR(80) NOT NULL,
+
+Date_of_Birth DATE NOT NULL,
+
+NIC_No VARCHAR(10) NOT NULL,
+
+Current_Status CHAR(10) NOT NULL,
+
+SalaryID INT NOT NULL,
+
+RoleID INT NOT NULL,
+
+PRIMARY KEY (EmployeeID),
+
+FOREIGN KEY (SalaryID) REFERENCES Salary(SalaryID),
+
+FOREIGN KEY (RoleID) REFERENCES Role(RoleID)
+
+);
+
+5)Appraisals table
+CREATE TABLE Appraisals(
+
+AppraisalID INT NOT NULL auto_increment,
+
+EmpID INT NOT NULL,
+
+Grading INT NOT NULL,
+
+Bonus DECIMAL(6,2),
+
+Liabilities VARCHAR(100),
+
+Reviews VARCHAR(100),
+
+PRIMARY KEY (AppraisalID)
+
+);
+
+-- Inserting values into tables
+
+Insert into Role
+
+Values (1,"Manager","Takes care of management issues of the company")
+
+
+
+Insert into Salary
+
+Values (1,"Manager",50000.00,0.1,0.1,10)
+
+
+
+Insert into Employee
+
+Values (1,"Saranapala","Elpitiya",'1994-10-07',"942811110v","Working",1,1)
+
+
+
+Insert into Attendance
+
+Values (1,1,'2016-08-16',"Present")
+
+
+
+Insert into Appraisals
+
+Values (1,1,5,1000.00,"Nothing","Good")
